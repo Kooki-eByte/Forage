@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Python0011!",
-    "database": "passport_demo",
+    "database": "meal_plan",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
