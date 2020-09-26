@@ -54,60 +54,52 @@ module.exports = function(app) {
   // API Routes For Database
 
   app.get("/api/meals/", function(req, res) {
-    db.findAll({})
-      .then(function(dbMeal) {
-        res.json(dbMeal);
-      });
+    db.findAll({}).then(function(dbMeal) {
+      res.json(dbMeal);
+    });
   });
 
   app.post("/api/breakfast", function(req, res) {
-    console.log(req.body);
-    console.log(req.user)
     db.Breakfast.create({
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
-      UserId: req.user.id
-    })
-      .then(function(dbMeal) {
-        res.json(dbMeal);
-      });
+      UserId: req.user.id,
+    }).then(function(dbMeal) {
+      res.json(dbMeal);
+    });
   });
 
   app.post("/api/lunch", function(req, res) {
-    console.log(req.body);
     db.Lunch.create({
       name: req.body.name,
       img: req.body.img,
-      ingredients: req.body.ingredients
-    })
-      .then(function(dbMeal) {
-        res.json(dbMeal);
-      });
+      ingredients: req.body.ingredients,
+      UserId: req.user.id,
+    }).then(function(dbMeal) {
+      res.json(dbMeal);
+    });
   });
 
   app.post("/api/dinner", function(req, res) {
-    console.log(req.body);
     db.Dinner.create({
       name: req.body.name,
       img: req.body.img,
-      ingredients: req.body.ingredients
-    })
-      .then(function(dbMeal) {
-        res.json(dbMeal);
-      });
+      ingredients: req.body.ingredients,
+      UserId: req.user.id,
+    }).then(function(dbMeal) {
+      res.json(dbMeal);
+    });
   });
 
   app.post("/api/snack", function(req, res) {
-    console.log(req.body);
     db.Snack.create({
       name: req.body.name,
       img: req.body.img,
-      ingredients: req.body.ingredients
-    })
-      .then(function(dbMeal) {
-        res.json(dbMeal);
-      });
+      ingredients: req.body.ingredients,
+      UserId: req.user.id,
+    }).then(function(dbMeal) {
+      res.json(dbMeal);
+    });
   });
-
 };
