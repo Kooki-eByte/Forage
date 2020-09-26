@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "Python0011!",
-=======
-    "password": "Ijgvjodg77!",
->>>>>>> a3f538ddb66b49bc384b27ea015bf977601346d8
+    "password": "Xd23seJ4!",
     "database": "meal_plan",
     "host": "127.0.0.1",
     "dialect": "mysql"
