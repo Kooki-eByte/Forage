@@ -62,7 +62,6 @@ module.exports = function(app) {
 
   app.post("/api/breakfast", function(req, res) {
     console.log(req.body);
-    console.log(req.user)
     db.Breakfast.create({
       name: req.body.name,
       img: req.body.img,
@@ -79,7 +78,8 @@ module.exports = function(app) {
     db.Lunch.create({
       name: req.body.name,
       img: req.body.img,
-      ingredients: req.body.ingredients
+      ingredients: req.body.ingredients,
+      UserId: req.user.id
     })
       .then(function(dbMeal) {
         res.json(dbMeal);
@@ -91,7 +91,8 @@ module.exports = function(app) {
     db.Dinner.create({
       name: req.body.name,
       img: req.body.img,
-      ingredients: req.body.ingredients
+      ingredients: req.body.ingredients,
+      UserId: req.user.id
     })
       .then(function(dbMeal) {
         res.json(dbMeal);
@@ -103,7 +104,8 @@ module.exports = function(app) {
     db.Snack.create({
       name: req.body.name,
       img: req.body.img,
-      ingredients: req.body.ingredients
+      ingredients: req.body.ingredients,
+      UserId: req.user.id
     })
       .then(function(dbMeal) {
         res.json(dbMeal);
