@@ -26,4 +26,8 @@ module.exports = function(app) {
   app.get("/food-search", isAuthenticated, (req, res) => {
     res.render("food-search");
   });
+
+  app.get("/view-all", isAuthenticated, (req, res) => {
+    res.render("view-all");
+  });
 };

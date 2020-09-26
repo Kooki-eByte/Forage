@@ -19,12 +19,16 @@ $(document).ready(function() {
       .trim()
       .split("  ");
 
+    let ingredientList = JSON.stringify(ingredientNames)
+
     // Hold the url of the specific foods image
-    let imgUrl = $(".food-img-" + foodIndex).attr("src");
+    let imgUrl = $(".food-img-" + foodIndex).attr("src");   
+
     console.log(foodName);
-    console.log(ingredientNames);
+    console.log(ingredientList);
     console.log(imgUrl);
 
+<<<<<<< HEAD
     // $.post("/api/breakfast", {
     //   name: foodName,
     //   img: imgUrl,
@@ -32,7 +36,41 @@ $(document).ready(function() {
     // })
     //   .then(alert("food saved to database"))
     //   .catch(alert("failed to save to database"));
+=======
+    $.post("/api/breakfast", {
+      name: foodName,
+      img: imgUrl,
+      ingredients: ingredientList,
+    })
+      .then(alert("Saved to Breakfast."))
+ 
+>>>>>>> a3f538ddb66b49bc384b27ea015bf977601346d8
   }
+
+  // $.post("/api/lunch", {
+  //   name: foodName,
+  //   img: imgUrl,
+  //   ingredients: ingredientList,
+  // })
+  //   .then(alert("Saved to Lunch."))
+ 
+
+  // $.post("/api/dinner", {
+  //   name: foodName,
+  //   img: imgUrl,
+  //   ingredients: ingredientList,
+  // })
+  //   .then(alert("Saved to Dinner."))
+  
+
+  // $.post("/api/snack", {
+  //   name: foodName,
+  //   img: imgUrl,
+  //   ingredients: ingredientList,
+  // })
+  //   .then(alert("Saved to Snack."))
+
+
 
   // Create a li tag for loop that will create a li tag for each food's ingredients
   function getIngredients(allIngredients, foodIdx) {
