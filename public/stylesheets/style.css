@@ -31,3 +31,11 @@ form.login {
   color: white;
   text-align: center;
 }
+
+#food-label {
+  font-size: 20px;
+}
+
+/* .search-btn {
+  float: right;
+} */
