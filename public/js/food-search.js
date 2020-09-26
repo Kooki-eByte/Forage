@@ -5,6 +5,8 @@ $(document).ready(function() {
 
   function savedFood() {
     let foodIndex = $(".save-food-btn").index(this);
+    let foodCategory = $(this).attr("data-category");
+    console.log(foodCategory);
 
     // Hold the name of the specific foods name
     let foodName = $("#food-label-" + foodIndex)
@@ -23,13 +25,13 @@ $(document).ready(function() {
     console.log(ingredientNames);
     console.log(imgUrl);
 
-    $.post("/api/breakfast", {
-      name: foodName,
-      img: imgUrl,
-      ingredients: ingredientNames,
-    })
-      .then(alert("food saved to database"))
-      .catch(alert("failed to save to database"));
+    // $.post("/api/breakfast", {
+    //   name: foodName,
+    //   img: imgUrl,
+    //   ingredients: ingredientNames,
+    // })
+    //   .then(alert("food saved to database"))
+    //   .catch(alert("failed to save to database"));
   }
 
   // Create a li tag for loop that will create a li tag for each food's ingredients
@@ -40,7 +42,6 @@ $(document).ready(function() {
     }
   }
 
-  $(document).on("click", ".save-food-btn", savedFood);
   $(".search-btn").on("click", (event) => {
     event.preventDefault();
     const apiID = "624148ca";
@@ -78,7 +79,10 @@ $(document).ready(function() {
               <div class="card-content">
                   <span id="food-label-${i}" class="card-title activator grey-text text-darken-4">${label}<i
                           class="material-icons right"></i></span>
-                  <button data-saveBtn=${i}><a class="waves-effect waves-light btn save-food-btn" >Save This Food</a></button>
+                  <button data-saveBtn=${i} data-category="0" ><a class="waves-effect waves-light btn save-food-btn" >Save Food as BF</a></button>
+                  <button data-saveBtn=${i} data-category="1" ><a class="waves-effect waves-light btn save-food-btn" >Save Food as LN</a></button>
+                  <button data-saveBtn=${i} data-category="2" ><a class="waves-effect waves-light btn save-food-btn" >Save Food as DN</a></button>
+                  <button data-saveBtn=${i} data-category="3" ><a class="waves-effect waves-light btn save-food-btn" >Save Food as SK</a></button>
               </div>
               <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Ingredients<i
@@ -95,4 +99,5 @@ $(document).ready(function() {
       }
     });
   });
+  $(document).on("click", ".save-food-btn", savedFood);
 });
