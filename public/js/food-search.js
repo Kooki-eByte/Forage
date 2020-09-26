@@ -6,7 +6,7 @@ $(document).ready(function() {
   function savedFood() {
     let foodIndex = $(this).attr("data-saveBtn");
     console.log("savedFood -> foodIndex", foodIndex);
-    let foodCategory = $(this).attr("data-category");
+    let foodCategory = $(this).attr("data-name");
     console.log("savedFood -> foodCategory", foodCategory);
 
     // Hold the name of the specific foods name
@@ -29,33 +29,12 @@ $(document).ready(function() {
     console.log(ingredientList);
     console.log(imgUrl);
 
-    $.post("/api/breakfast", {
+    $.post("/api/"+foodCategory, {
       name: foodName,
       img: imgUrl,
       ingredients: ingredientList,
-    }).then(alert("Saved to Breakfast."));
+    }).then(alert("Saved to "+foodCategory+"."));
   }
-
-  // $.post("/api/lunch", {
-  //   name: foodName,
-  //   img: imgUrl,
-  //   ingredients: ingredientList,
-  // })
-  //   .then(alert("Saved to Lunch."))
-
-  // $.post("/api/dinner", {
-  //   name: foodName,
-  //   img: imgUrl,
-  //   ingredients: ingredientList,
-  // })
-  //   .then(alert("Saved to Dinner."))
-
-  // $.post("/api/snack", {
-  //   name: foodName,
-  //   img: imgUrl,
-  //   ingredients: ingredientList,
-  // })
-  //   .then(alert("Saved to Snack."))
 
   // Create a li tag for loop that will create a li tag for each food's ingredients
   function getIngredients(allIngredients, foodIdx) {
@@ -105,10 +84,10 @@ $(document).ready(function() {
               <div class="card-content">
                   <span id="food-label-${i}" class="card-title activator grey-text text-darken-4">${label}<i
                           class="material-icons right"></i></span>
-                  <button data-saveBtn=${i} data-category="0" class="waves-effect waves-light btn save-food-btn" >Save to Breakfast</button>
-                  <button data-saveBtn=${i} data-category="1" class="waves-effect waves-light btn save-food-btn" >Save to Lunch</button>
-                  <button data-saveBtn=${i} data-category="2" class="waves-effect waves-light btn save-food-btn" >Save to Dinner</button>
-                  <button data-saveBtn=${i} data-category="3" class="waves-effect waves-light btn save-food-btn" >Save to Snack</button>
+                  <button data-saveBtn=${i} data-name="breakfast" class="waves-effect waves-light btn save-food-btn" >Save to Breakfast</button>
+                  <button data-saveBtn=${i} data-name="lunch" class="waves-effect waves-light btn save-food-btn" >Save to Lunch</button>
+                  <button data-saveBtn=${i} data-name="dinner" class="waves-effect waves-light btn save-food-btn" >Save to Dinner</button>
+                  <button data-saveBtn=${i} data-name="snack" class="waves-effect waves-light btn save-food-btn" >Save to Snack</button>
               </div>
               <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Ingredients<i
