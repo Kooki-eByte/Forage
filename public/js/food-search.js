@@ -67,13 +67,16 @@ $(document).ready(function() {
 
   $(".search-btn").on("click", (event) => {
     event.preventDefault();
-    const apiID = "624148ca";
-    const apiKey = "3202b5b475f9db472ee86d78a4d01722";
-    let food = $("#food-name").val();
+    let userSearch = {
+      food: $("#food-name").val(),
+      dietOption: $(".diet-option").val(),
+    };
 
-    $.get(
-      `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}`
-    ).then((data) => {
+    // `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}`
+    $.ajax({
+      method: "GET",
+      url: "/api/food/" + userSearch.food + "/" + userSearch.dietOption,
+    }).then((data) => {
       // console.log(data.hits);
 
       // Delete all of the content inside
