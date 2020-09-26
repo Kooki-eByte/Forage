@@ -11,11 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   );
   Breakfast.associate = function(models) {
-    Breakfast.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
+    Breakfast.belongsTo(models.User);
   };
   return Breakfast;
 };

@@ -33,6 +33,14 @@ module.exports = function(sequelize, DataTypes) {
     );
   });
 
+  User.associate = function(models) {
+  
+    User.hasMany(models.Breakfast);
+    User.hasMany(models.Lunch);
+    User.hasMany(models.Dinner);
+    User.hasMany(models.Snack);
+
+  };
 
   return User;
 };
