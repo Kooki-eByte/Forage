@@ -65,7 +65,8 @@ module.exports = function(app) {
     db.Breakfast.create({
       name: req.body.name,
       img: req.body.img,
-      ingredients: req.body.ingredients
+      ingredients: req.body.ingredients,
+      userid: req.user.id
     })
       .then(function(dbMeal) {
         res.json(dbMeal);

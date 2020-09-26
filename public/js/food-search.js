@@ -27,14 +27,16 @@ $(document).ready(function() {
     console.log(foodName);
     console.log(ingredientList);
     console.log(imgUrl);
+
+    $.post("/api/breakfast", {
+    name: foodName,
+    img: imgUrl,
+    ingredients: ingredientList,
+  })
+    .then(alert("Saved to Breakfast."))
   }
 
-  // $.post("/api/breakfast", {
-  //   name: foodName,
-  //   img: imgUrl,
-  //   ingredients: ingredientList,
-  // })
-  //   .then(alert("Saved to Breakfast."))
+
 
   // $.post("/api/lunch", {
   //   name: foodName,
