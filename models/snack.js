@@ -10,5 +10,12 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true,
     }
   );
+  Snack.associate = function (models) {
+    Snack.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   return Snack;
 };

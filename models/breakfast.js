@@ -10,5 +10,12 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true,
     }
   );
+  Breakfast.associate = function(models) {
+    Breakfast.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   return Breakfast;
 };
