@@ -4,9 +4,10 @@ $(document).ready(function() {
   // Grabbing the submit button from the food-search
 
   function savedFood() {
-    
-    let foodIndex = $(".save-food-btn").index(this);
+    let foodIndex = $(this).attr("data-saveBtn");
+    console.log("savedFood -> foodIndex", foodIndex);
     let foodCategory = $(this).attr("data-category");
+    console.log("savedFood -> foodCategory", foodCategory);
 
     // Hold the name of the specific foods name
     let foodName = $("#food-label-" + foodIndex)
@@ -29,14 +30,11 @@ $(document).ready(function() {
     console.log(imgUrl);
 
     $.post("/api/breakfast", {
-    name: foodName,
-    img: imgUrl,
-    ingredients: ingredientList,
-  })
-    .then(alert("Saved to Breakfast."))
+      name: foodName,
+      img: imgUrl,
+      ingredients: ingredientList,
+    }).then(alert("Saved to Breakfast."));
   }
-
-
 
   // $.post("/api/lunch", {
   //   name: foodName,
