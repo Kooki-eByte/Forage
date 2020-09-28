@@ -52,54 +52,96 @@ module.exports = function(app) {
     }
   });
 
-  // API Route for Edamam
+// Aapi route for Edamam
 
-  app.get("/api/food/:food/:diet", (req, res) => {
-    let food = req.params.food;
-    let diet = req.params.diet;
-    let apiID = process.env.API;
+app.get("/api/food/:food/:diet", (req, res) => {
+  let food = req.params.food;
+  let diet = req.params.diet;
+  let apiID = process.env.API;
 
-    if (req.params.diet) {
-      axios
-        .get(
-          `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}&health=${diet}`
-        )
-        .then(function(res) {
-          res.json(food);
-        });
-      res.json(food);
-    } else {
-      axios
-        .get(
-          `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}`
-        )
-        .then(function(res) {
-          res.json(food);
-        });
-      res.json(food);
-    }
+  if (req.params.diet) {
+    axios
+      .get(
+        `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}&health=${diet}`
+      )
+      .then(function(res) {
+        res.json(food);
+      });
+    res.json(food);
+  } else {
+    axios
+      .get(
+        `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}`
+      )
+      .then(function(res) {
+        res.json(food);
+      });
+    res.json(food);
+  }
+});
+
+// Api get routes for database
+
+app.get("/api/meals/breakfast", function(req, res) {
+  var query = {};
+  if (req.query.users_id) {
+    query.UserId = req.query.users_id;
+  }  
+  db.Breakfast.findAll({
+    where: query,
+    include: [db.User]
+}).then(function(dbMeal) {
+    console.log(dbMeal);
+    res.render("view-all", dbMeal);
   });
+});
 
-  // API Routes for Database
-
-  app.get("/api/meals/", function(req, res) {
-    db.findAll({}).then(function(dbMeal) {
-      res.json(dbMeal);
-    });
+app.get("/api/meals/lunch", function(req, res) {
+  var query = {};
+  if (req.query.users_id) {
+    query.UserId = req.query.users_id;
+  }  
+  db.Lunch.findAll({
+    where: query,
+    include: [db.User]
+}).then(function(dbMeal) {
+    console.log(dbMeal);
+    res.render("view-all", dbMeal);
   });
+});
 
-  app.get("/api/meals/category/:category", function(req, res) {
-    db.Post.findAll({
-      where: {
-        category: req.params.category,
-      },
-    }).then(function(dbMeal) {
-      res.json(dbMeal);
-    });
+app.get("/api/meals/dinner", function(req, res) {
+  var query = {};
+  if (req.query.users_id) {
+    query.UserId = req.query.users_id;
+  }  
+  db.Dinner.findAll({
+    where: query,
+    include: [db.User]
+}).then(function(dbMeal) {
+    console.log(dbMeal);
+    res.render("view-all", dbMeal);
   });
+});
+
+app.get("/api/meals/snack", function(req, res) {
+  var query = {};
+  if (req.query.users_id) {
+    query.UserId = req.query.users_id;
+  }  
+  db.Snack.findAll({
+    where: query,
+    include: [db.User]
+}).then(function(dbMeal) {
+    console.log(dbMeal);
+    res.render("view-all", dbMeal);
+  });
+});
+
+  // Api post routes for database
 
   app.post("/api/breakfast", function(req, res) {
-    db.Breakfast.create({
+     db.Breakfast.create({
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
@@ -114,10 +156,11 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
-      UserId: req.user.id,
-    }).then(function(dbMeal) {
-      res.json(dbMeal);
-    });
+      UserId: req.user.id
+    })
+      .then(function(dbMeal) {
+        res.json(dbMeal);
+      });
   });
 
   app.post("/api/dinner", function(req, res) {
@@ -125,10 +168,11 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
-      UserId: req.user.id,
-    }).then(function(dbMeal) {
-      res.json(dbMeal);
-    });
+      UserId: req.user.id
+    })
+      .then(function(dbMeal) {
+        res.json(dbMeal);
+      });
   });
 
   app.post("/api/snack", function(req, res) {
@@ -136,9 +180,10 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
-      UserId: req.user.id,
-    }).then(function(dbMeal) {
-      res.json(dbMeal);
-    });
+      UserId: req.user.id
+    })
+      .then(function(dbMeal) {
+        res.json(dbMeal);
+      });
   });
 };
