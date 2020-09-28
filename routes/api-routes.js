@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const axios = require("axios");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -51,30 +52,48 @@ module.exports = function(app) {
     }
   });
 
-  // API Routes For Database
+  // API Route for Edamam
 
-  app.get("/api/meals/", function(req, res) {
-    db.findAll({})
-      .then(function(dbMeal) {
-        res.json(dbMeal);
-      });
+  app.get("/api/food/:food/:diet", (req, res) => {
+    let food = req.params.food;
+    let diet = req.params.diet;
+    let apiID = process.env.API;
+
+    if (req.params.diet) {
+      axios
+        .get(
+          `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}&health=${diet}`
+        )
+        .then(function(res) {
+          res.json(food);
+        });
+      res.json(food);
+    } else {
+      axios
+        .get(
+          `https://api.edamam.com/search?q=${food}&app_id=${apiID}&app_key=${apiKey}`
+        )
+        .then(function(res) {
+          res.json(food);
+        });
+      res.json(food);
+    }
   });
 
+  // API Routes for Database
+  
   app.post("/api/breakfast", function(req, res) {
-    console.log(req.body);
-    db.Breakfast.create({
+     db.Breakfast.create({
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
-      UserId: req.user.id
-    })
-      .then(function(dbMeal) {
-        res.json(dbMeal);
-      });
+      UserId: req.user.id,
+    }).then(function(dbMeal) {
+      res.json(dbMeal);
+    });
   });
 
   app.post("/api/lunch", function(req, res) {
-    console.log(req.body);
     db.Lunch.create({
       name: req.body.name,
       img: req.body.img,
@@ -87,7 +106,6 @@ module.exports = function(app) {
   });
 
   app.post("/api/dinner", function(req, res) {
-    console.log(req.body);
     db.Dinner.create({
       name: req.body.name,
       img: req.body.img,
@@ -100,7 +118,6 @@ module.exports = function(app) {
   });
 
   app.post("/api/snack", function(req, res) {
-    console.log(req.body);
     db.Snack.create({
       name: req.body.name,
       img: req.body.img,
@@ -111,5 +128,4 @@ module.exports = function(app) {
         res.json(dbMeal);
       });
   });
-
 };
