@@ -36,4 +36,5 @@ module.exports = function(app) {
   app.get("/view-all", isAuthenticated, (req, res) => {
     res.render("view-all");
   });
+
 };

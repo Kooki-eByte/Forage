@@ -15,9 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-const publicDir = require("path").join(__dirname,"/public"); 
-app.use(express.static(publicDir)); 
-
 // Having our server work with express-handlebars
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
