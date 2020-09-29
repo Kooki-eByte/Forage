@@ -88,8 +88,8 @@ module.exports = function(app) {
 
   // Api get routes for database
 
-  app.get("/api/meals/breakfast", isAuthenticated, function(req, res) {
-    var query = {};
+  app.get("/api/meals/breakfast", function(req, res) {
+    let query = {};
     if (req.query.users_id) {
       query.UserId = req.query.users_id;
     }
@@ -103,7 +103,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/meals/lunch", function(req, res) {
-    var query = {};
+    let query = {};
     if (req.query.users_id) {
       query.UserId = req.query.users_id;
     }
@@ -117,7 +117,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/meals/dinner", function(req, res) {
-    var query = {};
+    let query = {};
     if (req.query.users_id) {
       query.UserId = req.query.users_id;
     }
@@ -131,7 +131,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/meals/snack", function(req, res) {
-    var query = {};
+    let query = {};
     if (req.query.users_id) {
       query.UserId = req.query.users_id;
     }
