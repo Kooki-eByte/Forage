@@ -2,6 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -97,7 +98,7 @@ module.exports = function(app) {
       include: [db.User],
     }).then(function(dbMeal) {
       console.log(dbMeal);
-      res.render("view-all", dbMeal);
+      res.render("breakfast", dbMeal);
     });
   });
 
