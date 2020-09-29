@@ -29,11 +29,11 @@ $(document).ready(function() {
     console.log(ingredientList);
     console.log(imgUrl);
 
-    $.post("/api/"+foodCategory, {
+    $.post("/api/" + foodCategory, {
       name: foodName,
       img: imgUrl,
       ingredients: ingredientList,
-    }).then(alert("Saved to "+foodCategory+"."));
+    }).then(alert("Saved to " + foodCategory + "."));
   }
 
   // Create a li tag for loop that will create a li tag for each food's ingredients
@@ -55,27 +55,28 @@ $(document).ready(function() {
     $.ajax({
       method: "GET",
       url: "/api/food/" + userSearch.food + "/" + userSearch.dietOption,
-    }).then((data) => {
-      // console.log(data.hits);
+    })
+      .then((data) => {
+        // console.log(data.hits);
 
-      // Delete all of the content inside
-      cardDiv.empty();
+        // Delete all of the content inside
+        cardDiv.empty();
 
-      let foods = data.hits.length;
+        let foods = data.hits.length;
 
-      for (let i = 0; i < foods; i++) {
-        let ingredientsList = [];
-        let label = data.hits[i].recipe.label;
-        let image = data.hits[i].recipe.image;
+        for (let i = 0; i < foods; i++) {
+          let ingredientsList = [];
+          let label = data.hits[i].recipe.label;
+          let image = data.hits[i].recipe.image;
 
-        let ingredientsLength = data.hits[i].recipe.ingredients.length;
+          let ingredientsLength = data.hits[i].recipe.ingredients.length;
 
-        for (let idx = 0; idx < ingredientsLength; idx++) {
-          let ingrText = data.hits[i].recipe.ingredients[idx].text;
-          ingredientsList.push(ingrText);
-        }
+          for (let idx = 0; idx < ingredientsLength; idx++) {
+            let ingrText = data.hits[i].recipe.ingredients[idx].text;
+            ingredientsList.push(ingrText);
+          }
 
-        const cardHtml = `
+          const cardHtml = `
         <div class="col l4 m6 s12">
           <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
@@ -98,11 +99,14 @@ $(document).ready(function() {
           </div>
         </div>`;
 
-        cardDiv.append(cardHtml);
-        // console.log(ingredientsList);
-        getIngredients(ingredientsList, i);
-      }
-    });
+          cardDiv.append(cardHtml);
+          // console.log(ingredientsList);
+          getIngredients(ingredientsList, i);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
   $(document).on("click", ".save-food-btn", savedFood);
 });
