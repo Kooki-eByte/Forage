@@ -86,3 +86,7 @@ footer.page-footer {
     margin-top: 0.5rem;
   }
 }
+
+#calc-card {
+  max-width: 500px;
+}
