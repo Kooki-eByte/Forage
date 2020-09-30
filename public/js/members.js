@@ -5,7 +5,7 @@ $(document).ready(() => {
     $(".member-name").text(data.email);
   });
 
-  //When a goal is selected after entering in gender, age, height, and weight then calcuate calories
+//When a goal is selected after entering in gender, age, height, and weight then calcuate calories
 //BMR calculated using Mifflin St Jeor Formula
 //sedentary multiplier 1.15; light activity 1.2; moderate acitivity 1.4; very active 1.6; extra active 1.8
 //If a required value is missing, notify the user to fix it
