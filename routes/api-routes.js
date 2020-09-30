@@ -147,6 +147,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);
@@ -158,6 +160,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);
@@ -169,6 +173,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);
@@ -180,6 +186,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);
