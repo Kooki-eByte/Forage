@@ -97,7 +97,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 
@@ -110,7 +110,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 
@@ -123,7 +123,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 
@@ -136,7 +136,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 

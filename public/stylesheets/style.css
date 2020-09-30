@@ -1,11 +1,3 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
 #main-logo {
   height: 625px;
   width: 400px;
@@ -21,7 +13,6 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
-
 
 p {
   line-height: 2rem;
@@ -82,16 +73,20 @@ footer.page-footer {
     top: 0;
   }
 
-  .parallax-container{
+  .parallax-container {
     margin: 2rem;
   }
 
   #main-logo {
     height: 375px;
-    width: 250px;  
+    width: 250px;
   }
 
   #mini-logo {
     margin-top: 0.5rem;
   }
+}
+
+#calc-card {
+  max-width: 500px;
 }
