@@ -97,7 +97,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 
@@ -110,7 +110,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 
@@ -123,7 +123,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 
@@ -136,7 +136,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", dbMeal);
+      res.render("view-all", { meal: dbMeal });
     });
   });
 
@@ -147,6 +147,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);
@@ -158,6 +160,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);
@@ -169,6 +173,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);
@@ -180,6 +186,8 @@ module.exports = function(app) {
       name: req.body.name,
       img: req.body.img,
       ingredients: req.body.ingredients,
+      servings: req.body.servings,
+      calories: req.body.calories,
       UserId: req.user.id,
     }).then(function(dbMeal) {
       res.json(dbMeal);

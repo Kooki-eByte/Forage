@@ -5,6 +5,8 @@ module.exports = function(sequelize, DataTypes) {
       name: DataTypes.STRING,
       img: DataTypes.STRING,
       ingredients: DataTypes.TEXT,
+      servings: DataTypes.INTEGER,
+      calories: DataTypes.INTEGER
     },
     {
       freezeTableName: true,
