@@ -2,7 +2,7 @@ $(document).ready(function() {
   $("select").formSelect();
   let cardDiv = $(".cards-table");
   // Grabbing the submit button from the food-search
-
+ 
   function savedFood() {
     let foodIndex = $(this).attr("data-saveBtn");
     console.log("savedFood -> foodIndex", foodIndex);
@@ -25,14 +25,16 @@ $(document).ready(function() {
     // Hold the url of the specific foods image
     let imgUrl = $(".food-img-" + foodIndex).attr("src");
 
-    console.log(foodName);
-    console.log(ingredientList);
-    console.log(imgUrl);
+    let servingsize = $("#food-serving-" + foodIndex).text()
 
-    $.post("/api/" + foodCategory, {
+    let caloriecount = $("#food-calorie-" + foodIndex).text()
+
+      $.post("/api/" + foodCategory, {
       name: foodName,
       img: imgUrl,
       ingredients: ingredientList,
+      servings: servingsize,
+      calories: caloriecount,
     }).then(alert("Saved to " + foodCategory + "."));
   }
 
@@ -58,7 +60,7 @@ $(document).ready(function() {
     })
       .then((data) => {
         // console.log(data.hits);
-
+      
         // Delete all of the content inside
         cardDiv.empty();
 
@@ -68,6 +70,9 @@ $(document).ready(function() {
           let ingredientsList = [];
           let label = data.hits[i].recipe.label;
           let image = data.hits[i].recipe.image;
+          let calorie = data.hits[i].recipe.calories;
+          let calorieTotal = Math.round(calorie);
+          let servings = data.hits[i].recipe.yield
 
           let ingredientsLength = data.hits[i].recipe.ingredients.length;
 
@@ -91,10 +96,15 @@ $(document).ready(function() {
                   <button data-saveBtn=${i} data-name="snack" class="waves-effect waves-light btn save-food-btn" >Save to Snack</button>
               </div>
               <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Ingredients<i
+                  <span class="card-title grey-text text-darken-4">Ingredients:<i
                           class="material-icons right">close</i></span>
                   <ul id="ingredients-list-${i}">
                   </ul>
+                  <br><span class="card-title grey-text text-darken-4">Servings:</span>
+                  <p id="food-serving-${i}">${servings}</p>
+                  <br>
+                  <br><span class="card-title grey-text text-darken-4">Calories:</span>
+                  <p id="food-calorie-${i}">${calorieTotal}</p>
               </div>
           </div>
         </div>`;
