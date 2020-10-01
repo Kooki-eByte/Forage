@@ -110,7 +110,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", { meal: dbMeal });
+      res.json(dbMeal);
     });
   });
 
@@ -123,12 +123,13 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", { meal: dbMeal });
+      res.json(dbMeal);
     });
   });
 
   app.get("/api/meals/snack", function(req, res) {
     let query = {};
+
     if (req.query.users_id) {
       query.UserId = req.query.users_id;
     }
@@ -136,7 +137,7 @@ module.exports = function(app) {
       where: query,
       include: [db.User],
     }).then(function(dbMeal) {
-      res.render("view-all", { meal: dbMeal });
+      res.json(dbMeal);
     });
   });
 
@@ -192,5 +193,65 @@ module.exports = function(app) {
     }).then(function(dbMeal) {
       res.json(dbMeal);
     });
+  });
+
+  // API Delete route for the view-all page
+  app.delete("/api/meals/delete/:foodId/:table", function(req, res) {
+    let tableName = req.params.table;
+    let food = parseInt(req.params.foodId);
+    let query = {};
+    if (req.query.users_id) {
+      query.UserId = req.query.users_id;
+    }
+
+    switch (tableName) {
+      case "breakfast":
+        db.Breakfast.destroy({
+          where: {
+            id: food,
+            UserId: req.query.users_id,
+          },
+          include: [db.User],
+        }).then((dbMeal) => {
+          res.json(dbMeal);
+        });
+        break;
+
+      case "lunch":
+        db.Lunch.destroy({
+          where: {
+            id: food,
+            UserId: req.query.users_id,
+          },
+          include: [db.User],
+        }).then((dbMeal) => {
+          res.json(dbMeal);
+        });
+        break;
+
+      case "dinner":
+        db.Dinner.destroy({
+          where: {
+            id: food,
+            UserId: req.query.users_id,
+          },
+          include: [db.User],
+        }).then((dbMeal) => {
+          res.json(dbMeal);
+        });
+        break;
+
+      case "snack":
+        db.Snack.destroy({
+          where: {
+            id: food,
+            UserId: req.query.users_id,
+          },
+          include: [db.User],
+        }).then((dbMeal) => {
+          res.json(dbMeal);
+        });
+        break;
+    }
   });
 };
