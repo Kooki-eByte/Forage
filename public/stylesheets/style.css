@@ -96,7 +96,8 @@ footer.page-footer {
 }
 
 #calc-card {
-  max-width: 500px;
+  max-width: 405px;
+  margin-right: 20px;
 }
 
 .github-link {
