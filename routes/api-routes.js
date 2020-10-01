@@ -199,10 +199,6 @@ module.exports = function(app) {
   app.delete("/api/meals/delete/:foodId/:table", function(req, res) {
     let tableName = req.params.table;
     let food = parseInt(req.params.foodId);
-    let query = {};
-    if (req.query.users_id) {
-      query.UserId = req.query.users_id;
-    }
 
     switch (tableName) {
       case "breakfast":
