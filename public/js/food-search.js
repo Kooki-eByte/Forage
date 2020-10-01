@@ -2,12 +2,10 @@ $(document).ready(function() {
   $("select").formSelect();
   let cardDiv = $(".cards-table");
   // Grabbing the submit button from the food-search
- 
+
   function savedFood() {
     let foodIndex = $(this).attr("data-saveBtn");
-    console.log("savedFood -> foodIndex", foodIndex);
     let foodCategory = $(this).attr("data-name");
-    console.log("savedFood -> foodCategory", foodCategory);
 
     // Hold the name of the specific foods name
     let foodName = $("#food-label-" + foodIndex)
@@ -25,14 +23,14 @@ $(document).ready(function() {
     // Hold the url of the specific foods image
     let imgUrl = $(".food-img-" + foodIndex).attr("src");
 
-    let servingsize = $("#food-serving-" + foodIndex).text()
+    let servingsize = $("#food-serving-" + foodIndex).text();
 
-    let caloriecount = $("#food-calorie-" + foodIndex).text()
+    let caloriecount = $("#food-calorie-" + foodIndex).text();
 
-      $.post("/api/" + foodCategory, {
+    $.post("/api/" + foodCategory, {
       name: foodName,
       img: imgUrl,
-      ingredients: ingredientList,
+      ingredients: ingredientList.slice(1, -1),
       servings: servingsize,
       calories: caloriecount,
     }).then(alert("Saved to " + foodCategory + "."));
@@ -60,7 +58,7 @@ $(document).ready(function() {
     })
       .then((data) => {
         // console.log(data.hits);
-      
+
         // Delete all of the content inside
         cardDiv.empty();
 
@@ -72,7 +70,7 @@ $(document).ready(function() {
           let image = data.hits[i].recipe.image;
           let calorie = data.hits[i].recipe.calories;
           let calorieTotal = Math.round(calorie);
-          let servings = data.hits[i].recipe.yield
+          let servings = data.hits[i].recipe.yield;
 
           let ingredientsLength = data.hits[i].recipe.ingredients.length;
 
