@@ -4,6 +4,14 @@
   border-radius: 15px;
 }
 
+.welcome-banner {
+  text-align: center;
+}
+
+.welcome-banner h5 {
+  font-size: 3rem;
+}
+
 #mini-logo {
   margin-top: 0.5rem;
   margin-right: 1rem;
@@ -32,7 +40,7 @@ p {
   width: 100%;
 }
 
-#foodblock{
+#foodblock {
   background-image: "images/lukas-blazek-f-TWhXOrLiU-unsplash.jpg";
 }
 
@@ -41,6 +49,12 @@ p {
 }
 .icon-block .material-icons {
   font-size: inherit;
+}
+
+main {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 footer.page-footer {
@@ -60,16 +74,6 @@ footer.page-footer {
   max-width: 100%;
   height: auto;
   object-fit: cover;
-}
-
-@media only screen and (max-width: 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -93,4 +97,14 @@ footer.page-footer {
 
 #calc-card {
   max-width: 500px;
+}
+
+.github-link {
+  padding: 2px 5px 2px 5px;
+  background-color: rgba(167, 255, 174, 0.6);
+  border-radius: 50%;
+}
+
+.github-link:hover {
+  background-color: green;
 }
