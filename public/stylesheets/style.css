@@ -32,6 +32,10 @@ p {
   width: 100%;
 }
 
+#foodblock{
+  background-image: "images/lukas-blazek-f-TWhXOrLiU-unsplash.jpg";
+}
+
 .icon-block {
   padding: 0 15px;
 }
