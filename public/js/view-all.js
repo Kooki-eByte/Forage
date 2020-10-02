@@ -12,9 +12,6 @@ $(document).ready(() => {
     let category = $(this).attr("data-name");
     userId = $(this).attr("data-user");
 
-    console.log(category);
-    console.log(userId);
-
     // Logic to grab our api information and then display the information into our page
     $.ajax({
       method: "GET",
