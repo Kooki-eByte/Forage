@@ -13,8 +13,9 @@
 
 2. [Test Instructions](#test)
 3. [Contribution Guideline](#contribution)
-4. [License](#license)
-5. [Questions](#questions)
+4. [Resources](#resource)
+5. [License](#license)
+6. [Questions](#questions)
 
 ## Documentation <a name="documentation"></a>
 
@@ -41,6 +42,15 @@
 ## License <a name="license"></a>
 
 - This Application is covered under the MIT License.
+
+## Resources  <a name="resource"></a>
+
+- Calorie calculator courtesy of:
+
+- [Nutrition-Calculator](https://github.com/vincy-code/Nutrition-Calculator)  
+
+
+
 
 ## Questions <a name="questions"></a>
 
