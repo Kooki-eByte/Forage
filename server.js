@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
+const compression = require("compression");
 require("dotenv").config();
 
 // Setting up port and requiring models for syncing
@@ -11,6 +12,7 @@ const db = require("./models");
 const exphbs = require("express-handlebars");
 // Creating express app and configuring middleware needed for authentication
 const app = express();
+app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
